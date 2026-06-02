@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocAppoint | Healthcare Management System</title>
+    <meta name="description" content="Book appointments with top-rated doctors effortlessly.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        .hidden-page { display: none; }
+        .active-link { color: #2563eb; font-weight: 700; }
+        .modal-active { display: flex !important; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="showPage('home')">
+                <img class="w-10 h-10" src="https://i.ibb.co/9G9f7C6/logo.png" alt="Logo">
+                <span class="text-2xl font-bold text-blue-600">DocAppoint</span>
+            </div>
+
+            <ul class="hidden lg:flex gap-8 font-medium text-gray-600">
+                <li><a href="javascript:void(0)" onclick="showPage('home')" id="nav-home" class="active-link">Home</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('appointments')" id="nav-appointments">All Appointment</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('dashboard')" id="nav-dashboard">Dashboard</a></li>
+            </ul>
+
+            <div class="flex items-center gap-4">
+                <div class="relative group">
+                    <button class="flex items-center border-2 border-blue-100 rounded-full p-0.5">
+                        <img id="user-photo" class="w-10 h-10 rounded-full object-cover" src="https://i.ibb.co/mJR9Qxc/user.png" alt="User">
+                    </button>
+                    <div class="hidden group-hover:block absolute right-0 mt-2 w-48 bg-white border border-gray-100 rounded-xl shadow-xl p-2 z-50">
+                        <p id="user-name" class="px-4 py-2 text-sm font-semibold text-blue-600 border-b border-gray-50 mb-1">Jane Doe</p>
+                        <button onclick="alert('Logout simulated')" class="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-50 rounded-lg font-medium">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="min-h-[calc(100vh-400px)]">
+        
+        <!-- HOME PAGE -->
+        <section id="page-home" class="content-page">
+            <!-- Hero -->
+            <div class="container mx-auto px-4 py-16">
+                <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-12 md:p-24 rounded-3xl shadow-2xl text-center">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6">Your Health, Our Priority</h1>
+                    <p class="text-xl mb-10 text-blue-100 max-w-2xl mx-auto">Book appointments with top-rated experts and manage your health journey in one place.</p>
+                    <div class="flex justify-center gap-4">
+                        <button onclick="showPage('appointments')" class="bg-white text-blue-700 px-8 py-4 rounded-full font-bold shadow-lg hover:bg-blue-50 transition-all">Find a Doctor</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Rated Doctors -->
+            <div class="container mx-auto px-4 py-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-12 text-center">Top Rated Doctors</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=800" class="w-full h-48 object-cover rounded-xl mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">Dr. Ayesha Rahman</h3>
+                        <p class="text-blue-600 font-semibold mb-4">Cardiologist</p>
+                        <button onclick="showDoctor('d1')" class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold">View Details</button>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=800" class="w-full h-48 object-cover rounded-xl mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">Dr. Imran Khan</h3>
+                        <p class="text-blue-600 font-semibold mb-4">Pediatrician</p>
+                        <button onclick="showDoctor('d2')" class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold">View Details</button>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=800" class="w-full h-48 object-cover rounded-xl mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">Dr. Fatima Begum</h3>
+                        <p class="text-blue-600 font-semibold mb-4">Dermatologist</p>
+                        <button onclick="showDoctor('d3')" class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ALL APPOINTMENTS PAGE -->
+        <section id="page-appointments" class="content-page hidden-page py-12">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
+                    <h2 class="text-3xl font-bold text-gray-800">Available Doctors</h2>
+                    <div class="flex w-full max-w-md">
+                        <input type="text" id="search-input" placeholder="Search by name..." class="w-full px-4 py-3 border border-gray-200 rounded-l-xl focus:outline-blue-500">
+                        <button onclick="alert('Search simulated')" class="bg-blue-600 text-white px-6 py-3 rounded-r-xl font-bold">Search</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="doctor-list">
+                    <!-- Same cards as home for static demo -->
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=800" class="w-full h-48 object-cover rounded-xl mb-4">
+                        <h3 class="text-xl font-bold">Dr. Ayesha Rahman</h3>
+                        <p class="text-blue-600 mb-4">Cardiologist</p>
+                        <button onclick="showDoctor('d1')" class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOCTOR DETAILS PAGE -->
+        <section id="page-details" class="content-page hidden-page py-12">
+            <div class="container mx-auto px-4">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+                    <img id="detail-img" src="" class="md:w-1/3 h-96 md:h-auto object-cover">
+                    <div class="p-8 md:p-12 md:w-2/3">
+                        <h2 id="detail-name" class="text-4xl font-bold text-gray-900 mb-2"></h2>
+                        <p id="detail-specialty" class="text-xl text-blue-600 font-bold mb-6"></p>
+                        <div class="grid grid-cols-2 gap-6 mb-8">
+                            <div>
+                                <p class="text-gray-500 text-sm font-bold uppercase">Hospital</p>
+                                <p id="detail-hospital" class="font-semibold"></p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm font-bold uppercase">Experience</p>
+                                <p id="detail-exp" class="font-semibold"></p>
+                            </div>
+                        </div>
+                        <p id="detail-desc" class="text-gray-600 leading-relaxed mb-10 text-lg"></p>
+                        <button onclick="toggleModal('booking-modal', true)" class="bg-blue-600 text-white px-12 py-4 rounded-full font-bold text-lg">Book Appointment</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DASHBOARD PAGE -->
+        <section id="page-dashboard" class="content-page hidden-page py-12">
+            <div class="container mx-auto px-4">
+                <h1 class="text-4xl font-bold mb-10 text-center">Dashboard</h1>
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Sidebar -->
+                    <div class="lg:w-1/4 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 h-fit">
+                        <button onclick="showDashboardTab('bookings')" id="tab-btn-bookings" class="w-full text-left p-4 rounded-xl mb-2 font-bold bg-blue-50 text-blue-700">🗓️ My Bookings</button>
+                        <button onclick="showDashboardTab('profile')" id="tab-btn-profile" class="w-full text-left p-4 rounded-xl font-bold text-gray-700 hover:bg-gray-50">👤 My Profile</button>
+                    </div>
+                    <!-- Content -->
+                    <div class="lg:w-3/4 bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                        <!-- My Bookings Tab -->
+                        <div id="dashboard-bookings">
+                            <h2 class="text-2xl font-bold mb-6">Current Appointments</h2>
+                            <div class="space-y-4">
+                                <div class="p-6 bg-blue-50 rounded-2xl border border-blue-100 flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-bold text-lg">Dr. Ayesha Rahman</h4>
+                                        <p class="text-gray-600">Patient: Rahim Uddin | May 20, 2026</p>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <button onclick="toggleModal('update-booking-modal', true)" class="bg-white text-blue-600 px-4 py-2 rounded-lg border border-blue-200 font-bold">Update</button>
+                                        <button onclick="alert('Delete simulated')" class="bg-white text-red-500 px-4 py-2 rounded-lg border border-red-100 font-bold">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Profile Tab -->
+                        <div id="dashboard-profile" class="hidden-page">
+                            <div class="flex flex-col items-center text-center">
+                                <img class="w-32 h-32 rounded-full border-4 border-blue-100 mb-4" src="https://i.ibb.co/mJR9Qxc/user.png">
+                                <h3 class="text-2xl font-bold">Jane Doe</h3>
+                                <p class="text-gray-500 mb-6">jane.doe@example.com</p>
+                                <button onclick="toggleModal('profile-modal', true)" class="bg-blue-600 text-white px-8 py-3 rounded-full font-bold">Update Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-white py-16 mt-20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-6">
+                <img class="w-10 h-10" src="https://i.ibb.co/9G9f7C6/logo.png">
+                <span class="text-3xl font-bold">DocAppoint</span>
+            </div>
+            <p class="text-slate-400 max-w-md mx-auto mb-8">Your trusted partner in healthcare. Secure appointments with top experts.</p>
+            <div class="flex justify-center gap-6 text-2xl text-slate-400">
+                <a href="#" class="hover:text-blue-400">FB</a>
+                <a href="#" class="hover:text-blue-400">𝕏</a>
+                <a href="#" class="hover:text-blue-400">IG</a>
+            </div>
+            <div class="mt-12 pt-8 border-t border-slate-800 text-slate-500 text-sm">
+                © 2026 DocAppoint Ltd. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODALS -->
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="hidden fixed inset-0 z-[100] bg-black/60 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-3xl p-8">
+            <div class="flex justify-between mb-6">
+                <h3 class="text-2xl font-bold">Book Appointment</h3>
+                <button onclick="toggleModal('booking-modal', false)" class="text-2xl">✕</button>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Appointment booked simulated'); toggleModal('booking-modal', false)" class="space-y-4">
+                <input type="text" value="Dr. Ayesha Rahman" readonly class="w-full p-3 bg-gray-50 border rounded-xl">
+                <input type="text" placeholder="Patient Name" required class="w-full p-3 border rounded-xl">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="date" required class="p-3 border rounded-xl">
+                    <input type="time" required class="p-3 border rounded-xl">
+                </div>
+                <button class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Profile Modal -->
+    <div id="profile-modal" class="hidden fixed inset-0 z-[100] bg-black/60 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-3xl p-8">
+            <div class="flex justify-between mb-6">
+                <h3 class="text-2xl font-bold">Update Profile</h3>
+                <button onclick="toggleModal('profile-modal', false)" class="text-2xl">✕</button>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Profile updated simulated'); toggleModal('profile-modal', false)" class="space-y-4">
+                <input type="text" value="Jane Doe" class="w-full p-3 border rounded-xl">
+                <input type="text" value="https://i.ibb.co/mJR9Qxc/user.png" class="w-full p-3 border rounded-xl">
+                <button class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Booking Modal -->
+    <div id="update-booking-modal" class="hidden fixed inset-0 z-[100] bg-black/60 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-3xl p-8">
+            <div class="flex justify-between mb-6">
+                <h3 class="text-2xl font-bold">Update Appointment</h3>
+                <button onclick="toggleModal('update-booking-modal', false)" class="text-2xl">✕</button>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Booking updated simulated'); toggleModal('update-booking-modal', false)" class="space-y-4">
+                <input type="text" value="Dr. Ayesha Rahman" readonly class="w-full p-3 bg-gray-50 border rounded-xl">
+                <input type="text" value="Rahim Uddin" class="w-full p-3 border rounded-xl">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="date" value="2026-05-20" class="p-3 border rounded-xl">
+                    <input type="time" value="10:30" class="p-3 border rounded-xl">
+                </div>
+                <button class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JS LOGIC -->
+    <script>
+        const doctors = {
+            d1: { name: "Dr. Ayesha Rahman", specialty: "Cardiologist", img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=800", hospital: "Labaid Cardiac Hospital", exp: "10 years", desc: "Highly experienced cardiologist specializing in heart diseases and preventive care." },
+            d2: { name: "Dr. Imran Khan", specialty: "Pediatrician", img: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=800", hospital: "Apollo Hospitals Dhaka", exp: "8 years", desc: "Dedicated pediatrician providing comprehensive care for children from infancy through adolescence." },
+            d3: { name: "Dr. Fatima Begum", specialty: "Dermatologist", img: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=800", hospital: "Square Hospitals Ltd.", exp: "12 years", desc: "Expert dermatologist offering advanced treatments for skin, hair, and nail conditions." }
+        };
+
+        function showPage(id) {
+            document.querySelectorAll('.content-page').forEach(p => p.classList.add('hidden-page'));
+            document.getElementById(`page-${id}`).classList.remove('hidden-page');
+            
+            document.querySelectorAll('nav ul a').forEach(a => a.classList.remove('active-link'));
+            const navItem = document.getElementById(`nav-${id}`);
+            if (navItem) navItem.classList.add('active-link');
+            
+            window.scrollTo(0,0);
+        }
+
+        function showDoctor(id) {
+            const doc = doctors[id];
+            document.getElementById('detail-img').src = doc.img;
+            document.getElementById('detail-name').innerText = doc.name;
+            document.getElementById('detail-specialty').innerText = doc.specialty;
+            document.getElementById('detail-hospital').innerText = doc.hospital;
+            document.getElementById('detail-exp').innerText = doc.exp;
+            document.getElementById('detail-desc').innerText = doc.desc;
+            showPage('details');
+        }
+
+        function showDashboardTab(tab) {
+            document.getElementById('dashboard-bookings').classList.toggle('hidden-page', tab !== 'bookings');
+            document.getElementById('dashboard-profile').classList.toggle('hidden-page', tab !== 'profile');
+            
+            document.getElementById('tab-btn-bookings').className = tab === 'bookings' 
+                ? "w-full text-left p-4 rounded-xl mb-2 font-bold bg-blue-50 text-blue-700" 
+                : "w-full text-left p-4 rounded-xl mb-2 font-bold text-gray-700 hover:bg-gray-50";
+            
+            document.getElementById('tab-btn-profile').className = tab === 'profile' 
+                ? "w-full text-left p-4 rounded-xl font-bold bg-blue-50 text-blue-700" 
+                : "w-full text-left p-4 rounded-xl font-bold text-gray-700 hover:bg-gray-50";
+        }
+
+        function toggleModal(id, show) {
+            document.getElementById(id).classList.toggle('modal-active', show);
+        }
+    </script>
+</body>
+</html>
