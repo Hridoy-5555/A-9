@@ -92,7 +92,7 @@ const MyBookings = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {bookings.map((booking) => (
-            <div key={booking._id} className="bg-blue-50 rounded-xl shadow-md p-6 border border-blue-100">
+            <div key={booking._id} className="bg-blue-50 rounded-xl shadow-md p-6 border border-blue-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
               <div className="flex items-center gap-4 mb-4">
                 <img src={booking.doctor.image} alt={booking.doctorName} className="w-16 h-16 rounded-full object-cover border-2 border-blue-200" />
                 <div>

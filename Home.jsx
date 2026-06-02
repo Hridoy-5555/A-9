@@ -105,17 +105,17 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Why Choose DocAppoint?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="p-6 bg-blue-50 rounded-xl shadow-md">
+            <div className="p-6 bg-blue-50 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-2">
               <div className="text-blue-600 text-5xl mb-4">🩺</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Expert Doctors</h3>
               <p className="text-gray-600">Access a network of highly qualified and experienced medical professionals.</p>
             </div>
-            <div className="p-6 bg-blue-50 rounded-xl shadow-md">
+            <div className="p-6 bg-blue-50 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-2">
               <div className="text-blue-600 text-5xl mb-4">⏰</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Easy Booking</h3>
               <p className="text-gray-600">Schedule appointments quickly and conveniently from anywhere, anytime.</p>
             </div>
-            <div className="p-6 bg-blue-50 rounded-xl shadow-md">
+            <div className="p-6 bg-blue-50 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-2">
               <div className="text-blue-600 text-5xl mb-4">🔒</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Secure & Private</h3>
               <p className="text-gray-600">Your health data is protected with robust security measures.</p>

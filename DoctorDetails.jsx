@@ -147,7 +147,7 @@ const DoctorDetails = () => {
               </h4>
               <ul className="text-gray-600 space-y-1">
                 {doctor.availability.map((time, idx) => (
-                  <li key={idx} className="bg-green-50 px-3 py-1 rounded-lg inline-block mr-2 mb-2 text-sm font-medium text-green-700">
+                  <li key={idx} className="bg-green-50 px-3 py-1 rounded-lg inline-block mr-2 mb-2 text-sm font-medium text-green-700 transition-colors duration-300 hover:bg-green-200">
                     {time}
                   </li>
                 ))}

@@ -39,7 +39,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2 transition-transform duration-300 hover:scale-105 active:scale-95">
           <img className="w-10 h-10" src="https://i.ibb.co/9G9f7C6/logo.png" alt="DocAppoint Logo" />
           <span className="text-2xl font-bold text-blue-600 hidden sm:block">DocAppoint</span>
         </Link>
@@ -56,7 +56,7 @@ const Navbar = () => {
               <img 
                 src={user?.photoURL || "https://i.ibb.co/mJR9Qxc/user.png"} 
                 alt="Profile" 
-                className="w-10 h-10 rounded-full border-2 border-blue-100 object-cover"
+                className="w-10 h-10 rounded-full border-2 border-blue-100 object-cover transition-all duration-300 hover:scale-110 hover:ring-2 hover:ring-blue-400"
               />
             </div>
             <button onClick={handleLogout} className="btn btn-outline btn-error btn-sm rounded-full px-5">Logout</button>
