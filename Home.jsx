@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../providers/AuthProvider"; // Assuming AuthContext path
+import { AuthContext } from "./AuthProvider";
 import { Helmet } from "react-helmet-async"; // Corrected import path
 
 // Placeholder for doctor data - in a real app, this would come from an API
@@ -51,6 +51,11 @@ const Home = () => {
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-down">
             Your Health, Our Priority.
           </h1>
+          <div className="flex justify-center mb-6">
+             <span className="badge badge-outline text-blue-100 px-4 py-3">
+               Trusted by 10,000+ Patients
+             </span>
+          </div>
           <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto animate-fade-in-up">
             Find and book appointments with top-rated doctors effortlessly. Manage your health journey with DocAppoint.
           </p>

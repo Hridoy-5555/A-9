@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../providers/AuthProvider";
+import { AuthContext } from "./AuthProvider";
 import toast from "react-hot-toast"; // Corrected import path
 import { Helmet } from "react-helmet-async"; // Corrected import path
 import { FaGoogle } from "react-icons/fa";

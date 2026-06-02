@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
+import { AuthContext } from "./AuthProvider";
 import { Helmet } from "react-helmet-async"; // Corrected import path
 import toast from "react-hot-toast";
-import UpdateBookingModal from "../../components/modals/UpdateBookingModal";
+import UpdateBookingModal from "./UpdateBookingModal";
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);

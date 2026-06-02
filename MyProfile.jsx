@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
+import { AuthContext } from "./AuthProvider";
 import { Helmet } from "react-helmet-async"; // Corrected import path
-import UpdateProfileModal from "../../components/modals/UpdateProfileModal";
+import UpdateProfileModal from "./UpdateProfileModal";
 
 const MyProfile = () => {
   const { user } = useContext(AuthContext);

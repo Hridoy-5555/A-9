@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom"; // Added useLocation
-import { AuthContext } from "../providers/AuthProvider";
+import { AuthContext } from "./AuthProvider";
 import { Helmet } from "react-helmet-async";
-import BookingModal from "../components/modals/BookingModal"; // Corrected path
+import BookingModal from "./BookingModal";
 
 const DoctorDetails = () => {
   const { id } = useParams();
