@@ -71,7 +71,7 @@ const AllAppointments = () => {
       {processedDoctors.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {processedDoctors.map((doctor) => (
-            <div key={doctor.id} className="card bg-white shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full">
+            <div key={doctor.id} className="card bg-white shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full animate-fade-in hover:-translate-y-1">
               <figure className="px-4 pt-4">
                 <img 
                   src={doctor.image} 

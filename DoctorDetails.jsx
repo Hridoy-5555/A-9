@@ -164,7 +164,7 @@ const DoctorDetails = () => {
 
           <button 
             onClick={handleBookAppointmentClick}
-            className="btn btn-info hover:bg-blue-600 text-white btn-lg w-full md:w-auto px-12 rounded-full shadow-lg shadow-blue-200 border-none"
+            className="btn btn-info hover:bg-blue-600 text-white btn-lg w-full md:w-auto px-12 rounded-full shadow-lg shadow-blue-200 border-none transition-transform hover:scale-105 active:scale-95"
           >
             Book Appointment
           </button>

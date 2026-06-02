@@ -52,7 +52,7 @@ const Home = () => {
             Your Health, Our Priority.
           </h1>
           <div className="flex justify-center mb-6">
-             <span className="badge badge-outline text-blue-100 px-4 py-3">
+             <span className="badge badge-outline text-blue-100 px-4 py-3 animate-fade-in">
                Trusted by 10,000+ Patients
              </span>
           </div>
@@ -60,10 +60,10 @@ const Home = () => {
             Find and book appointments with top-rated doctors effortlessly. Manage your health journey with DocAppoint.
           </p>
           <div className="flex justify-center gap-4 animate-fade-in-up">
-            <Link to="/all-appointments" className="btn btn-primary bg-white text-blue-700 hover:bg-blue-100 border-none px-8 py-3 rounded-full text-lg font-semibold shadow-md transition-all duration-300">
+            <Link to="/all-appointments" className="btn btn-primary bg-white text-blue-700 hover:bg-blue-100 border-none px-8 py-3 rounded-full text-lg font-semibold shadow-md transition-all duration-300 hover:scale-105 active:scale-95">
               Find a Doctor
             </Link>
-            <Link to="/register" className="btn btn-outline text-white border-white hover:bg-white hover:text-blue-700 px-8 py-3 rounded-full text-lg font-semibold shadow-md transition-all duration-300">
+            <Link to="/register" className="btn btn-outline text-white border-white hover:bg-white hover:text-blue-700 px-8 py-3 rounded-full text-lg font-semibold shadow-md transition-all duration-300 hover:scale-105 active:scale-95">
               Join Us
             </Link>
           </div>
@@ -78,7 +78,7 @@ const Home = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Our Top-Rated Doctors</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {topDoctors.map((doctor) => (
-              <div key={doctor.id} className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div key={doctor.id} className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up">
                 <img src={doctor.image} alt={doctor.name} className="w-full h-56 object-cover" />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">{doctor.name}</h3>
